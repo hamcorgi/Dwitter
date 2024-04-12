@@ -42,17 +42,12 @@
    DATABASE_URL=mongodb://localhost:27017/twitter-clone
    JWT_SECRET=your-jwt-secret
    ```
-
+   
 5. 프로젝트 실행:
    ```
    npm start
    ```
-
-이제 브라우저에서 `http://localhost:3000`으로 접속하여 Twitter 클론 프로젝트를 사용할 수 있습니다.
-
-## 기여
-
-이 프로젝트에 기여하고 싶다면 Pull Request를 보내주세요. 버그 리포트나 기능 요청은 Issue를 통해 알려주세요.
+브라우저에서 `http://localhost:3000`으로 접속하여 Twitter 클론 프로젝트를 사용할 수 있습니다.
 
 ## 라이선스
 
