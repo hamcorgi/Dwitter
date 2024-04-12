@@ -2,11 +2,11 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import {} from 'express-async-errors';
 import * as userRepository from '../data/auth.js';
+import {config} from '../config.js';
 
-// TODO: Make it secure!
-const jwtSecretKey = 'F2dN7x8HVzBWaQuEEDnhsvHXRWqAR63z';
-const jwtExpiresInDays = '2d';
-const bcryptSaltRounds = 12;
+const jwtSecretKey = config.jwt.sercretKey;
+const jwtExpiresInDays = config.jwt.expiresIn;
+const bcryptSaltRounds = config.bcrypt.saltRounds;
 
 export async function signup(req, res) {
   const { username, password, name, email, url } = req.body;
