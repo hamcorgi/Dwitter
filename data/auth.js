@@ -10,7 +10,7 @@ export let users = [
    
     },
 ];
-//$2a$12$vQ2GmBnh6N4tc1rmHNhmzOAneuz5P/xSUPXqh2TgCjGn8PSBpxEoi
+
 //Login specified ID find logic
 
 export async function findByUsername(username){
