@@ -1,29 +1,20 @@
-
-export let users = [
-    {
-    id: "1",
-    username: "tae",
-    password: "$2a$12$vQ2GmBnh6N4tc1rmHNhmzOAneuz5P/xSUPXqh2TgCjGn8PSBpxEoi",
-    name: "tae",
-    email: "uxogus@naver.com",
-    url: ""
-   
-    },
-];
+import { db } from '../DB/db.js';
 
 //Login specified ID find logic
 
 export async function findByUsername(username){
-
-    return users.find((user) => user.username === username);
-
+    return db.execute('SELECT * FROM users WHERE username=?',[username])
+    .then((result) => result[0][0])
 }
 export async function findById(id){
-    return users.find((user) => user.id === id );
+    return db.execute('SELECT * FROM users WHERE username=?',[username])
+    .then((result) => result[0][0])
 }
 //회원가입
 export async function createUser(user){
-    const created = {...user, id: Date.now().toString() };
-    users.push(created);
-    return created.id;
+    const {username, password, name,  email, url} = user;
+    return db.
+    execute('INSERT INTO users (username, password, name, email, url) VALUES (?,?,?,?,?)', 
+    [username, password, name,  email, url]
+    ).then((result) => result[0].insertId)
 }

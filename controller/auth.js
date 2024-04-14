@@ -5,8 +5,8 @@ import * as userRepository from '../data/auth.js';
 import {config} from '../config.js';
 
 const jwtSecretKey = config.jwt.sercretKey;
-const jwtExpiresInDays = config.jwt.expiresIn;
-const bcryptSaltRounds = config.bcrypt.saltRounds;
+const jwtExpiresInDays = config.jwt.expiresInSec;
+const bcryptSaltRounds = 12//config.bcrypt.saltRounds;
 
 export async function signup(req, res) {
   const { username, password, name, email, url } = req.body;
