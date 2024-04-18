@@ -1,20 +1,49 @@
-import { db } from '../DB/db.js';
 
-//Login specified ID find logic
+import { DataTypes } from 'sequelize';
+import { sequelize } from '../DB/db.js';
 
-export async function findByUsername(username){
-    return db.execute('SELECT * FROM users WHERE username=?',[username])
-    .then((result) => result[0][0])
+export const User = sequelize.define('user',{
+    id:{
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        unique: true,
+        autoIncrement: true,
+    },
+    username:{
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    password:{
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    name:{
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    email:{
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    url: DataTypes.TEXT,
+},
+    {timestamps: false});
+
+export async function findByUsername(username) {
+    //l
+    return User.findOne({ where :{ username }});
 }
-export async function findById(id){
-    return db.execute('SELECT * FROM users WHERE username=?',[username])
-    .then((result) => result[0][0])
+
+export async function findById(id) {
+    return User.findByPk(id);
+
 }
-//회원가입
-export async function createUser(user){
-    const {username, password, name,  email, url} = user;
-    return db.
-    execute('INSERT INTO users (username, password, name, email, url) VALUES (?,?,?,?,?)', 
-    [username, password, name,  email, url]
-    ).then((result) => result[0].insertId)
+
+export async function createUser(user) {
+
+    return User.create(user).then(data => {
+        console.log(data); // Debug용
+         return data.dataValues.id;
+        });
+//current problem :  signup already exist, login anything data pass 
 }
