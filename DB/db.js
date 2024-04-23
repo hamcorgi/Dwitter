@@ -10,8 +10,6 @@ export const sequelize = new Sequelize(db_table, user ,db_password,{
     logging: false
 })
 
-
-
 const pool = mysql.createPool({
     host: config.db.host,
     user: config.db.user,
