@@ -18,4 +18,7 @@ export const config = { //비슷한 type끼리 묶어서 재사용성 up
     bcrypt: {
         saltRounds:parseInt(process.env.BCRYPT_SALT_ROUNDS),
     },
+    cors:{
+        allowedOrigin:process.env.CORS_ALLOW_ORIGIN
+    }
 };
